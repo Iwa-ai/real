@@ -1,0 +1,16 @@
+{% extends "first/post_list.html" %}
+
+
+{% block new %}
+
+<center>
+
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<button type="submit" class="btn btn-dander">Delete</button>
+</form>
+
+</center>
+{% endblock new %}
+    
+    

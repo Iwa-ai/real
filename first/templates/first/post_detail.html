@@ -1,0 +1,21 @@
+{% extends "first/post_list.html" %}
+
+
+{% block new %}
+ <center>
+     
+   
+
+     <p>{{object.title}}</p>
+     <p>{{object.name}}</p>
+     <p>{{object.tokuten}}</p>
+      
+     <a href="{% url 'update' post.pk %}">Update</a> <br>
+     <a href="{% url 'delete' post.pk %}">Delete</a>
+
+
+
+</center>
+
+{% endblock new %}
+    
