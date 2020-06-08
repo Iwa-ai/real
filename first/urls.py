@@ -7,5 +7,5 @@ urlpatterns = [
     path('detail/<int:pk>/',views.Post_detail.as_view(),name='detail'),
     path('update/<int:pk>/',views.Post_update.as_view(),name='update'),
     path('delete/<int:pk>/',views.Post_delete.as_view(),name='delete'),
-    path('callback/',views.callback,namae='callback'),
+    #path('callback/',views.callback,namae='callback'),
 ]   

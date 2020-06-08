@@ -7,7 +7,7 @@ from django.utils import timezone
 import json
 from django.http import HttpResponseBadRequest,HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Post,EmailPush,LinePush
+#from .models import Post,EmailPush,LinePush
 
 
 # Create your views here.
@@ -29,7 +29,7 @@ class Post_new(LoginRequiredMixin,CreateView):
     
     def form_valid(self,form):
         form.instance.author == self.request.user
-        return super().form.valid(form)
+        return super().form_valid(form)
 
 class Post_update(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
     model = Post
@@ -55,20 +55,3 @@ class Post_delete(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
             return True
         return False
    
-
-def callback(request):
-    if request.method == 'POST':
-        request_json = json.loads(request.body.decode('utf-8'))
-        events = request_json['events']
-        line_user_id == events[0]['source']['userid']
-        
-        if line_user_id =='Udeadbeefdeadbeefdeadbeefdeadbeef':
-            pass
-
-        elif events[0]['type'] =='follow':
-            LinePush.objects.create(user_id = line_user_id)
-        
-        elif events[0]['type'] == 'unfollow'
-            LinePush.objects.filter(user_id=line_user_id).delete()
-
-    return HttpResponse()        

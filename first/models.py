@@ -29,7 +29,7 @@ class Post(models.Model):
   
     def updated(self):
         self.updated = timezone.now()
-        return save()
+        return self.save()
 
     def __str__(self):
         return str(self.name) + ':'  + self.title
@@ -38,9 +38,3 @@ class Post(models.Model):
         return reverse('detail', kwargs={'pk': self.pk})
 
 
-class LinePush(models.Model):
-
-    user_id = models.CharField('ユーザーID',max_length=100,unique=True)
-
-    def __str__(self):
-        return self.user_id
